@@ -69,13 +69,13 @@ const Hero = ({darkMode}) => {
                     data-aos="fade-up"
                     data-aos-delay="500"
                     >
-                        Hi, I'm Artur
+                        Social Media & Copywriter
                     </h1>
-                    <p className={ `mb-6 sm:mb-8 leading-relaxed max-w-md sm:max-w-lg ${theme.textSecondary}`}
+                    <p className={ `mb-6 sm:mb-8 leading-relaxed max-w-md sm:max-w-lg ${theme.textSecondary} text-justify`}
                     data-aos="fade-up"
                     data-aos-delay="600"
                     >
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, qui ab, fugit eligendi omnis fuga ipsum harum repellat atque aliquam illum ipsa illo expedita totam. Modi deserunt totam quasi at?
+                        Te ajudo a impulsionar seu negócio, criando experiências digitais envolventes e personalizadas que encantam seus clientes e elevam sua marca a novos patamares.
                     </p>
                     {/* Buttons */}
                     <div className='w-full pt-4 sm:pt-6'>

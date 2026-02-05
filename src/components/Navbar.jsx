@@ -51,7 +51,6 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
       transition={{duration: 0.5}}
       className={`flex items-center justify-center ${colors.navBg} rounded-2xl backdrop-blur-lg px-4 lg:px-8 py-2 shadow-lg`}>
       <div className="flex items-center justify-between w-full space-x-6 lg:space-x-8"> 
-        {/* Logo */}
         <motion.a
           href="/"
           whileHover={{scale: 1.05}}
@@ -62,7 +61,6 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
               className={`text-[#013ff6]`}>.</span>
             </span>
           </motion.a>
-          { /*Navigation Items */}
           <div className="hidden lg:flex items-center space-x-6 ">
             {navItems.map((item) => (
               <a 
@@ -98,7 +96,6 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
             ))}
           </div>
           <div className="flex items-center space-x-2">
-           { /* Dark mode Toogle */}
            <motion.button
            whileHover={{scale: 1.1}}
            whileTap={{scale:0.9}}
@@ -116,7 +113,6 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
             )}
 
            </motion.button>
-           { /* Button */}
            <motion.a
            href="contact"
            whileHover={{scale: 1.05}}
@@ -129,7 +125,6 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
             Planos
            </motion.a>
           </div>
-          {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center space-x-4 px-2">
             <motion.button
             whileTap={{scale:0.9 }}

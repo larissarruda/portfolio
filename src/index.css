@@ -2,7 +2,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .dark{
@@ -12,3 +12,15 @@ body{
 html{
     scroll-behavior: smooth;
 }
+
+@keyframes scroll 
+{
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(10%); }
+                }
+                .animate-scroll {
+                    animation: scroll 15s linear infinite alternate;
+                }
+                .animate-scroll:hover {
+                    animation-play-state: paused;
+                }
