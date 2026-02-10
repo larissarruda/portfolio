@@ -32,6 +32,7 @@ const About = (darkMode) => {
                         Com uma abordagem estratégica e criativa, ajudo empresas a contar suas histórias de maneira envolvente, impulsionando seu crescimento e engajamento nas redes sociais. Minha missão é transformar ideias em conteúdo impactante que ressoe com o público, elevando a presença digital das marcas a novos patamares.
                     </p>
                 </div>
+                
             </div>
         </section>
     );
