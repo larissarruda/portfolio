@@ -5,10 +5,6 @@ import videoedit2 from "../assets/videoedit2.png";
 import { useState } from "react";
 import { X } from "lucide-react";
 
-function Section({ secname }) {
-  return <p>{secname}</p>;
-}
-
 const Projects = ({ darkMode }) => {
   const [currentSection, setCurrentSection] = useState(null)
 
