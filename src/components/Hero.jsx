@@ -3,7 +3,6 @@ import linkedin from '../assets/linkedin-dark.svg';
 import vimeo from '../assets/vimeo-dark.svg';
 import gmail from '../assets/email-dark.svg';
 import cutiepie from '../assets/51.png';
-import { div } from 'framer-motion/client';
 import CV from '../assets/CV.pdf';
 import { DownloadIcon, Mail} from "lucide-react"
 

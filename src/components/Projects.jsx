@@ -4,6 +4,7 @@ import socialmedia from "../assets/socialmedia.png";
 import videoedit2 from "../assets/videoedit2.png";
 import { useState } from "react";
 import { X } from "lucide-react";
+import SocialMedia from "./portfolio/SocialMedia.jsx";
 
 const Projects = ({ darkMode }) => {
   const [currentSection, setCurrentSection] = useState(null)
@@ -55,7 +56,7 @@ const Projects = ({ darkMode }) => {
         
       </div>
       {/* verde: b6ff00  azul claro: #013ff6 azul escuro: #04045e meio preto: #242834*/}
-      <section id="projects-body" className="px-4 sm:px-8 lg:px-14 mb-10 mx-90">
+      <section id="projects-body" className="px-4 sm:px-8 lg:px-14 mb-10 mx-30">
         <div className={`justify-end  ${currentSection ? 'flex justify-center mb-10' : 'hidden'}`}>
           <button className="btn btn-secondary w-10 h-8 cursor-pointer bg-[#b6ff00] text-black rounded-lg font-bold justify-center items-center flex" onClick={() => handleSectionChange('close')}>
             <X className="w-5 h-5" />
@@ -65,11 +66,12 @@ const Projects = ({ darkMode }) => {
           {sectionItems.map((item) => (
             <div key={item.name} className={`${currentSection === item.name ? 'block' : 'hidden'}`}>
               {item.name === 'social-media' && (
-                <a>oi</a>
+                <SocialMedia />
               )}
               {item.name === 'copywriting' && (
                 <div>
                   <iframe src="https://gy6oy75wr203eg6.embednotionpage.com/?v=30464bcec435805891c9000ce9deb857" width="100%" height="600" frameborder="0" allowfullscreen background-color="black"/>
+                  artur-portfolio.notion.site/embed
                 </div>
                 )}
               {item.name === 'video-edit' && (
