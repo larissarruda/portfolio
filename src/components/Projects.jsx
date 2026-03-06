@@ -5,7 +5,8 @@ import videoedit2 from "../assets/videoedit2.png";
 import { useState } from "react";
 import { X } from "lucide-react";
 import SocialMedia from "./portfolio/SocialMedia.jsx";
-
+import Copywriting from "./portfolio/Copywriting.jsx";
+import VideoEdit from "./portfolio/VideoEdit.jsx";
 const Projects = ({ darkMode }) => {
   const [currentSection, setCurrentSection] = useState(null)
 
@@ -69,13 +70,10 @@ const Projects = ({ darkMode }) => {
                 <SocialMedia />
               )}
               {item.name === 'copywriting' && (
-                <div>
-                  <iframe src="https://gy6oy75wr203eg6.embednotionpage.com/?v=30464bcec435805891c9000ce9deb857" width="100%" height="600" frameborder="0" allowfullscreen background-color="black"/>
-                  artur-portfolio.notion.site/embed
-                </div>
+                <Copywriting />
                 )}
               {item.name === 'video-edit' && (
-                <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" width="100%" height="600" frameborder="0" allowfullscreen />
+                <VideoEdit />
               )}
             </div>
           ))}
