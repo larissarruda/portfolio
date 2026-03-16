@@ -15,7 +15,7 @@ const About = (darkMode) => {
                 data-aos="fade-down"
                 data-aos-delay="250"
             >
-                <div className="lg:w-1/2 w-full flex justify-center lg:justify-start">
+                <div className="hidden md:flex lg:w-1/2 w-full justify-center lg:justify-start">
                     <img
                         src={cutiepie}
                         alt="Artur Schlichting"
@@ -23,7 +23,7 @@ const About = (darkMode) => {
                     />
                 </div>
                 
-                <div className="lg:w-1/2 w-full lg:pl-10 mt-10 lg:mt-0">
+                <div className="lg:w-1/2 w-full lg:pl-10 mt-0 md:mt-10 lg:mt-0">
                     <h2 className="text-3xl sm:text-4xl font-bold mb-6 lg:text-right">Sobre mim</h2>
                     <p className="mb-4 leading-relaxed text-justify">
                         Me chamo Artur, sou um Social Media e Copywriter apaixonado por criar conexões autênticas entre marcas e pessoas.

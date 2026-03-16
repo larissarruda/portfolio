@@ -1,18 +1,9 @@
-import instagram from '../assets/instagram-dark.svg';
-import linkedin from '../assets/linkedin-dark.svg';
-import vimeo from '../assets/vimeo-dark.svg';
-import gmail from '../assets/email-dark.svg';
 import cutiepie from '../assets/51.png';
 import CV from '../assets/CV.pdf';
 import { DownloadIcon, Mail} from "lucide-react"
 
 const Hero = ({darkMode}) => {
-    const socialIcons = [
-      {icon: instagram, alt: 'Instagram', link: 'https://www.instagram.com/unfav_tunico/'},
-      {icon: linkedin, alt: 'LinkedIn', link: 'https://www.linkedin.com/in/artur-schlichting/'},
-      {icon: vimeo, alt: 'Vimeo', link: 'https://vimeo.com/unfav_tunico'},
-      {icon: gmail, alt: 'Gmail', link: 'mailto:arturschlichting@gmail.com'},
-    ];
+    
     const lightTheme = {
     textPrimary: 'text-gray-900',
     textSecondary: 'text-gray-700',
@@ -38,32 +29,11 @@ const Hero = ({darkMode}) => {
         data-aos-delay="250"
         className='body-font z-10'
         >
-            <div className='container mx-auto flex px-4 sm:px-8 lg:px-14  sm:py-80 py-25 lg:py-30 flex-col
+            <div className='container mx-auto flex px-4 sm:px-8 lg:px-14 sm:py-80 py-18 lg:py-30 flex-col
             lg:flex-row items-center justify-center lg:justify-between' >
                 <div className='lg:w-1/2 w-full flex flex-col items-center
                 lg:items-start text-center lg:text-left mb-12 lg:mb-0   '>
-                    <div className='flex justify-center lg:justify-start gap-4 sm:gap-6 mb-6 sm:mb-7 w-full'>
-                        {socialIcons.map((social, index) => (
-                            <a key={index}
-                            href={social.link}
-                            target="_blank"
-                            data-aos-delay={`${400 + index * 100}`}
-                            className='transform hover:scale-110
-                            transition-transform duration-300'
-                            >
-                                <img
-                                src={social.icon}
-                                alt={social.alt}
-                                className={`w-8 h-8 sm:w-10 sm:h-10 object-contain ${darkMode
-                                    ? '' 
-                                    : 'filter brightness-75'
-                                }`}
-                                >
-
-                                </img>
-                            </a>
-                        ))}
-                    </div>
+                    
                     <h1 className={`title-font text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${theme.textPrimary}`}
                     data-aos="fade-up"
                     data-aos-delay="500"
@@ -108,7 +78,7 @@ const Hero = ({darkMode}) => {
                 </div>
                 {/* Image */}
                 <div
-                className='lg:w-80 w-full max-w-md lg:max-w-lg mt-9
+                className='hidden md:flex lg:w-80 w-full max-w-md lg:max-w-lg mt-9
                 lg:mt-0 flex justify-center lg:justify-end items-center'
                 /* data-aos="fade-up"
                 data-aos-delay="400" */

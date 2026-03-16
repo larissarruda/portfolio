@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const Copywriting = ({ darkMode }) => {
   const [currentPdfIndex, setCurrentPdfIndex] = useState(0)
   const [currentSection, setCurrentSection] = useState('objetivo')
   const [currentPage, setCurrentPage] = useState(1)
+  const touchStartX = useRef(null)
 
   const portfolio = [
     {
@@ -145,13 +146,49 @@ A ambientação em um escritório e a linguagem acessível buscam tornar o conte
     }
   }
 
+  const goToNextCopy = () => {
+    goToPdf((currentPdfIndex + 1) % portfolio.length)
+  }
+
+  const goToPrevCopy = () => {
+    goToPdf((currentPdfIndex - 1 + portfolio.length) % portfolio.length)
+  }
+
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX
+  }
+
+  const handleTouchEnd = (event) => {
+    if (touchStartX.current === null) {
+      return
+    }
+
+    const touchEndX = event.changedTouches[0].clientX
+    const deltaX = touchEndX - touchStartX.current
+    const swipeThreshold = 50
+
+    if (Math.abs(deltaX) > swipeThreshold) {
+      if (deltaX < 0) {
+        goToNextCopy()
+      } else {
+        goToPrevCopy()
+      }
+    }
+
+    touchStartX.current = null
+  }
+
   const currentItem = portfolio[currentPdfIndex]
   const isVideo = currentItem.file.toLowerCase().endsWith('.mp4')
 
   return (
-    <div className="w-full py-12 px-4 bg-[#242834] rounded-lg shadow-lg relative">
-      <div className="max-w-5xl mx-auto relative grid grid-cols-2 gap-6">
-        <div className="relative overflow-hidden rounded-lg shadow-2xl p-8 bg-[#1f2230] text-white">
+    <div className="w-full py-8 sm:py-12 px-3 sm:px-4 bg-[#242834] rounded-lg shadow-lg relative">
+      <div
+        className="max-w-5xl mx-auto relative grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div className="order-2 lg:order-1 relative overflow-hidden rounded-lg shadow-2xl p-4 sm:p-6 lg:p-8 bg-[#1f2230] text-white">
           <div className="flex items-center justify-between mb-4">
             <button
               onClick={() => toggleSection('prev')}
@@ -159,7 +196,7 @@ A ambientação em um escritório e a linguagem acessível buscam tornar o conte
             >
               <ChevronLeft size={16} />
             </button>
-            <h2 className="text-2xl font-bold capitalize">{currentSection}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold capitalize">{currentSection}</h2>
             <button
               onClick={() => toggleSection('next')}
               className="bg-white/70 hover:bg-white text-gray-900 h-8 w-8 flex items-center justify-center rounded-full transition-all hover:scale-110"
@@ -167,17 +204,17 @@ A ambientação em um escritório e a linguagem acessível buscam tornar o conte
               <ChevronRight size={16} />
             </button>
           </div>
-          <p className="whitespace-pre-line text-lg leading-relaxed">
+          <p className="whitespace-pre-line text-sm sm:text-base lg:text-lg leading-relaxed">
             {portfolio[currentPdfIndex][currentSection]}
           </p>
         </div>
 
-        <div className="relative overflow-hidden rounded-lg shadow-2xl">
+        <div className="order-1 lg:order-2 relative overflow-hidden rounded-lg shadow-2xl">
           {isVideo ? (
             <video
               key={`${currentPdfIndex}-${currentPage}`}
               controls
-              className="w-full h-[600px] border-none overflow-hidden bg-black"
+              className="w-full h-[320px] sm:h-[500px] lg:h-[600px] border-none overflow-hidden bg-black"
               title={`${currentItem.title} - Vídeo`}
             >
               <source src={currentItem.file} type="video/mp4" />
@@ -187,44 +224,64 @@ A ambientação em um escritório e a linguagem acessível buscam tornar o conte
             <iframe
               key={`${currentPdfIndex}-${currentPage}`}
               src={`${currentItem.file}#page=${currentPage}&toolbar=0&navpanes=0`}
-              className="w-full h-[600px] border-none overflow-hidden block"
+              className="w-full h-[320px] sm:h-[500px] lg:h-[600px] border-none overflow-hidden block"
               title={`${currentItem.title} - PDF`}
             />
           )}
 
           {!isVideo && (
-            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-4">
+            <div className="mt-3 sm:mt-0 sm:absolute sm:bottom-20 left-1/2 sm:-translate-x-1/2 flex justify-center gap-2 sm:gap-4 px-2">
               <button
                 onClick={prevPage}
-                className="bg-white/80 hover:bg-white text-gray-900 px-4 py-2 rounded-full transition-all hover:scale-105"
+                className="bg-white/80 hover:bg-white text-gray-900 text-sm sm:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all hover:scale-105"
               >
                 Página anterior
               </button>
               <button
                 onClick={nextPage}
-                className="bg-white/80 hover:bg-white text-gray-900 px-4 py-2 rounded-full transition-all hover:scale-105"
+                className="bg-white/80 hover:bg-white text-gray-900 text-sm sm:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-all hover:scale-105"
               >
                 Próxima página
               </button>
             </div>
           )}
+
+          <div className="sm:hidden absolute top-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded-full">
+            Deslize para trocar
+          </div>
         </div>
       </div>
 
       <div className="flex justify-center mt-6">
-        <div className="text-gray-300 text-sm bg-black/50 px-4 py-2 rounded-full">
+        <div className="flex items-center gap-2 sm:gap-3 text-gray-300 text-xs sm:text-sm text-center bg-black/50 px-2 sm:px-3 py-2 rounded-full">
+          <button
+            onClick={goToPrevCopy}
+            className="bg-white/70 hover:bg-white text-gray-900 h-7 w-7 sm:h-8 sm:w-8 flex items-center justify-center rounded-full transition-all hover:scale-110"
+            aria-label="Copy anterior"
+          >
+            <ChevronLeft size={14} />
+          </button>
+
           {isVideo
             ? `Vídeo ${currentPdfIndex + 1} / ${portfolio.length} — ${currentItem.title}`
             : `PDF ${currentPdfIndex + 1} / ${portfolio.length} — ${currentSection} — Página ${currentPage} / ${currentItem.totalPages}`}
+
+          <button
+            onClick={goToNextCopy}
+            className="bg-white/70 hover:bg-white text-gray-900 h-7 w-7 sm:h-8 sm:w-8 flex items-center justify-center rounded-full transition-all hover:scale-110"
+            aria-label="Próximo copy"
+          >
+            <ChevronRight size={14} />
+          </button>
         </div>
       </div>
 
-      <div className="flex justify-center gap-3 mt-8">
+      <div className="hidden sm:flex flex-wrap justify-center gap-2 sm:gap-3 mt-6 sm:mt-8">
         {portfolio.map((item, index) => (
           <button
             key={item.id}
             onClick={() => goToPdf(index)}
-            className={`relative h-24 w-32 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 ${
+            className={`relative h-20 w-24 sm:h-24 sm:w-32 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 ${
               index === currentPdfIndex ? 'ring-2 ring-blue-500' : ''
             }`}
           >
@@ -252,7 +309,7 @@ A ambientação em um escritório e a linguagem acessível buscam tornar o conte
                 title={`Miniatura ${item.title}`}
               />
             )}
-            <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs text-center py-1">
+            <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] sm:text-xs text-center py-0.5 sm:py-1">
               {item.title}
             </div>
           </button>

@@ -66,3 +66,16 @@ body {
   color: #b6ff00;
   font-size: 24px;
 }
+
+@media (max-width: 639px) {
+  .pdf-swiper .swiper-button-next,
+  .pdf-swiper .swiper-button-prev,
+  .page-swiper .swiper-button-next,
+  .page-swiper .swiper-button-prev {
+    transform: scale(0.75);
+  }
+
+  .page-swiper .swiper-slide {
+    width: 100% !important;
+  }
+}

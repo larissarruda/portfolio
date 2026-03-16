@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -70,28 +71,41 @@ const SocialMedia = () => {
     }
   }, [currentPdfIndex, swiper])
 
+  const goToNextPdf = () => {
+    setCurrentPdfIndex((prev) => (prev + 1) % portfolioPdfs.length)
+  }
+
+  const goToPrevPdf = () => {
+    setCurrentPdfIndex((prev) => (prev - 1 + portfolioPdfs.length) % portfolioPdfs.length)
+  }
+
   return (
-    <div className="w-full py-12 px-4 bg-[#242834] rounded-lg shadow-lg flex flex-col items-center">
+    <div className="w-full py-8 sm:py-12 px-3 sm:px-4 bg-[#242834] rounded-lg shadow-lg flex flex-col items-center">
       <Swiper
         onSwiper={setSwiper}
         slidesPerView={1}
         spaceBetween={30}
-        navigation={true}
-        modules={[Navigation]}
-        className="pdf-swiper"
+        modules={[]}
+        className="pdf-swiper w-full"
         onSlideChange={(swiper) => setCurrentPdfIndex(swiper.activeIndex)}
       >
         {pdfData.map((pdf, pdfIndex) => (
           <SwiperSlide key={pdfIndex}>
-            <div className="relative max-w-[800px] max-h-[600px] overflow-hidden rounded-lg shadow-xl bg-[#242834] flex items-center justify-center">
+            <div className="relative w-full max-w-[800px] h-[320px] sm:h-[600px] overflow-hidden rounded-lg shadow-xl bg-[#242834] flex items-center justify-center">
               <Swiper
-                slidesPerView={1.5}
+                slidesPerView={1.1}
                 centeredSlides={true}
-                spaceBetween={20}
+                spaceBetween={12}
                 navigation={true}
                 pagination={{ clickable: true }}
                 modules={[Navigation, Pagination]}
                 className="page-swiper"
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 20
+                  }
+                }}
               >
                 {pdf.pages.map((page, pageIndex) => (
                   <SwiperSlide key={pageIndex}>
@@ -109,7 +123,7 @@ const SocialMedia = () => {
                           await page.render({ canvasContext: context, viewport: scaledViewport }).promise
                         }
                       }}
-                      className="max-w-[800px] max-h-[600px] mx-auto object-contain"
+                      className="max-w-full max-h-[300px] sm:max-h-[600px] mx-auto object-contain"
                     />
                   </SwiperSlide>
                 ))}
@@ -119,7 +133,29 @@ const SocialMedia = () => {
         ))}
       </Swiper>
 
-      <div className="flex justify-center gap-3 mt-8">
+      <div className="flex justify-center mt-6">
+        <div className="flex items-center gap-2 sm:gap-3 text-gray-300 text-xs sm:text-sm text-center bg-black/50 px-2 sm:px-3 py-2 rounded-full">
+          <button
+            onClick={goToPrevPdf}
+            className="bg-white/70 hover:bg-white text-gray-900 h-7 w-7 sm:h-8 sm:w-8 flex items-center justify-center rounded-full transition-all hover:scale-110"
+            aria-label="PDF anterior"
+          >
+            <ChevronLeft size={14} />
+          </button>
+
+          {`PDF ${currentPdfIndex + 1} / ${portfolioPdfs.length} — ${portfolioPdfs[currentPdfIndex]?.title ?? ''}`}
+
+          <button
+            onClick={goToNextPdf}
+            className="bg-white/70 hover:bg-white text-gray-900 h-7 w-7 sm:h-8 sm:w-8 flex items-center justify-center rounded-full transition-all hover:scale-110"
+            aria-label="Próximo PDF"
+          >
+            <ChevronRight size={14} />
+          </button>
+        </div>
+      </div>
+
+      <div className="hidden sm:flex justify-center gap-3 mt-8">
         {pdfData.map((pdf, index) => (
           <button
             key={pdf.id}

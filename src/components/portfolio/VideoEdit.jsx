@@ -38,54 +38,54 @@ const VideoEdit = ({ darkMode }) => {
   }
 
   return (
-    <div className="w-full py-12 px-4 bg-[#242834] rounded-lg shadow-lg relative">
+    <div className="w-full py-8 sm:py-12 px-3 sm:px-4 bg-[#242834] rounded-lg shadow-lg relative">
       <div className="max-w-5xl mx-auto relative">
         <div className="relative overflow-hidden rounded-lg shadow-2xl bg-black">
           <video
             key={currentVideoIndex}
             controls
-            className="w-full h-[500px] border-none"
+            className="w-full h-[260px] sm:h-[420px] lg:h-[500px] border-none"
             title={videos[currentVideoIndex].title}
           >
             <source src={videos[currentVideoIndex].file} type="video/mp4" />
             Seu navegador não suporta vídeo HTML5.
           </video>
 
-          <div className="absolute top-1/2 left-0 flex items-center px-6 -translate-y-1/2">
+          <div className="absolute top-1/2 left-0 flex items-center px-2 sm:px-6 -translate-y-1/2">
             <button
               onClick={prevVideo}
-              className="bg-white/80 hover:bg-white text-gray-900 h-12 w-12 flex items-center justify-center rounded-full transition-all hover:scale-110"
+              className="bg-white/80 hover:bg-white text-gray-900 h-9 w-9 sm:h-12 sm:w-12 flex items-center justify-center rounded-full transition-all hover:scale-110"
             >
-              <ChevronLeft size={24} />
+              <ChevronLeft size={18} />
             </button>
           </div>
 
-          <div className="absolute top-1/2 right-0 flex items-center px-6 -translate-y-1/2">
+          <div className="absolute top-1/2 right-0 flex items-center px-2 sm:px-6 -translate-y-1/2">
             <button
               onClick={nextVideo}
-              className="bg-white/80 hover:bg-white text-gray-900 h-12 w-12 flex items-center justify-center rounded-full transition-all hover:scale-110"
+              className="bg-white/80 hover:bg-white text-gray-900 h-9 w-9 sm:h-12 sm:w-12 flex items-center justify-center rounded-full transition-all hover:scale-110"
             >
-              <ChevronRight size={24} />
+              <ChevronRight size={18} />
             </button>
           </div>
         </div>
 
-        <div className="mt-4 p-4 bg-[#1f2230] rounded-lg text-white">
-          <p className="text-lg leading-relaxed">{videos[currentVideoIndex].caption}</p>
+        <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-[#1f2230] rounded-lg text-white">
+          <p className="text-sm sm:text-lg leading-relaxed">{videos[currentVideoIndex].caption}</p>
         </div>
 
         <div className="flex justify-center mt-6">
-          <div className="text-gray-300 text-sm bg-black/50 px-4 py-2 rounded-full">
+          <div className="text-gray-300 text-xs sm:text-sm bg-black/50 px-3 sm:px-4 py-2 rounded-full">
             Vídeo {currentVideoIndex + 1} / {videos.length}
           </div>
         </div>
 
-        <div className="flex justify-center gap-3 mt-8">
+        <div className="hidden sm:flex flex-wrap justify-center gap-2 sm:gap-3 mt-6 sm:mt-8">
           {videos.map((video, index) => (
             <button
               key={video.id}
               onClick={() => goToVideo(index)}
-              className={`relative h-24 w-32 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 ${
+              className={`relative h-20 w-24 sm:h-24 sm:w-32 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 ${
                 index === currentVideoIndex ? 'ring-2 ring-blue-500' : ''
               }`}
             >
@@ -94,7 +94,7 @@ const VideoEdit = ({ darkMode }) => {
                 alt={`Preview ${video.title}`}
                 className="w-full h-full object-cover pointer-events-none"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs text-center py-1">
+              <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] sm:text-xs text-center py-0.5 sm:py-1">
                 {video.title}
               </div>
             </button>
