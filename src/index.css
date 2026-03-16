@@ -24,3 +24,11 @@ html{
                 .animate-scroll:hover {
                     animation-play-state: paused;
                 }
+
+@keyframes slow-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+.animate-slow-spin {
+    animation: slow-spin 200s linear infinite;
+}

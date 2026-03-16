@@ -1,5 +1,5 @@
 import React from 'react';
-import cutiepie from '../assets/cutiepie-green-torto.png';
+import about from '../assets/artur.png';
 
 const About = (darkMode) => {
     return (
@@ -17,9 +17,9 @@ const About = (darkMode) => {
             >
                 <div className="hidden md:flex lg:w-1/2 w-full justify-center lg:justify-start">
                     <img
-                        src={cutiepie}
+                        src={about}
                         alt="Artur Schlichting"
-                        className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-cover"
+                        className="w-64 sm:w-80 md:w-96 h-auto object-contain"
                     />
                 </div>
                 

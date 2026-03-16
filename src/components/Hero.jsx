@@ -88,9 +88,7 @@ const Hero = ({darkMode}) => {
                         <img
                         src={cutiepie}
                         alt='Hero image'
-                        className='w-full h-auto object-cover
-                         transform hover:scale-105
-                        transition-transform duration-500 rounded-lg'
+                        className='w-full h-auto object-cover animate-slow-spin rounded-lg'
                         /* data-aos="fade-left"
                         data-aos-delay="700" */
                         />
