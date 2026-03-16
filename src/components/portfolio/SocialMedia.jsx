@@ -1,117 +1,149 @@
-import React, { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import './styles.css';
+import { Pagination, Navigation } from 'swiper/modules';
+import * as pdfjsLib from 'pdfjs-dist'
 
-const SocialMedia = ({ darkMode }) => {
-  const [currentPdfIndex, setCurrentPdfIndex] = useState(0)
-  const [currentPage, setCurrentPage] = useState(1)
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`
 
+const SocialMedia = () => {
   const portfolioPdfs = [
-    { id: 1, file: '/hist.pdf', title: 'Histórico Escolar', totalPages: 3 },
-    { id: 2, file: '/hist.pdf', title: 'Histórico Escolar 2', totalPages: 3 },
-    { id: 3, file: '/hist.pdf', title: 'Histórico Escolar 3', totalPages: 3 }
+    { id: 1, file: '/KLG.pdf', title: 'KLG' },
+    { id: 2, file: '/Burnout.pdf', title: 'Burnout' },
+    { id: 3, file: '/KLG3.pdf', title: 'KLG 3' }
   ]
 
-  const nextPdf = () => {
-    setCurrentPdfIndex((prev) => (prev + 1) % portfolioPdfs.length)
-    setCurrentPage(1)
-  }
+  const [pdfData, setPdfData] = useState([])
+  const [currentPdfIndex, setCurrentPdfIndex] = useState(0)
+  const [thumbnails, setThumbnails] = useState({})
+  const [swiper, setSwiper] = useState(null)
 
-  const prevPdf = () => {
-    setCurrentPdfIndex((prev) => (prev - 1 + portfolioPdfs.length) % portfolioPdfs.length)
-    setCurrentPage(1)
-  }
+  useEffect(() => {
+    const loadAllPdfs = async () => {
+      const data = []
+      for (const pdfInfo of portfolioPdfs) {
+        const loadingTask = pdfjsLib.getDocument(pdfInfo.file)
+        const pdf = await loadingTask.promise
+        const pagePromises = []
+        for (let i = 1; i <= pdf.numPages; i++) {
+          pagePromises.push(pdf.getPage(i))
+        }
+        const loadedPages = await Promise.all(pagePromises)
+        data.push({ id: pdfInfo.id, title: pdfInfo.title, pages: loadedPages })
+      }
+      setPdfData(data)
+    }
+    loadAllPdfs()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const nextPage = () => {
-    setCurrentPage((prev) =>
-      prev < portfolioPdfs[currentPdfIndex].totalPages ? prev + 1 : prev
-    )
-  }
+  useEffect(() => {
+    const generateThumbnails = async () => {
+      const thumbs = {}
+      for (const pdf of portfolioPdfs) {
+        try {
+          const loadingTask = pdfjsLib.getDocument(pdf.file)
+          const doc = await loadingTask.promise
+          const firstPage = await doc.getPage(1)
+          const viewport = firstPage.getViewport({ scale: 0.5, rotation: firstPage.rotate })
+          const canvas = document.createElement('canvas')
+          const context = canvas.getContext('2d')
+          canvas.height = viewport.height
+          canvas.width = viewport.width
+          await firstPage.render({ canvasContext: context, viewport }).promise
+          thumbs[pdf.id] = canvas.toDataURL()
+        } catch (error) {
+          console.error('Error loading thumbnail for', pdf.title, error)
+          thumbs[pdf.id] = null
+        }
+      }
+      setThumbnails(thumbs)
+    }
+    generateThumbnails()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const prevPage = () => {
-    setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))
-  }
-
-  const goToPdf = (index) => {
-    setCurrentPdfIndex(index)
-    setCurrentPage(1)
-  }
+  useEffect(() => {
+    if (swiper) {
+      swiper.slideTo(currentPdfIndex)
+    }
+  }, [currentPdfIndex, swiper])
 
   return (
-    <div className="w-full py-12 px-4 bg-[#242834] rounded-lg shadow-lg relative">
-      <div className="max-w-3xl mx-auto relative">
-        <div className="relative overflow-hidden rounded-lg shadow-2xl">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${(currentPage - 1) * 100}%)` }}
+    <div className="w-full py-12 px-4 bg-[#242834] rounded-lg shadow-lg flex flex-col items-center">
+      <Swiper
+        onSwiper={setSwiper}
+        slidesPerView={1}
+        spaceBetween={30}
+        navigation={true}
+        modules={[Navigation]}
+        className="pdf-swiper"
+        onSlideChange={(swiper) => setCurrentPdfIndex(swiper.activeIndex)}
+      >
+        {pdfData.map((pdf, pdfIndex) => (
+          <SwiperSlide key={pdfIndex}>
+            <div className="relative max-w-[800px] max-h-[600px] overflow-hidden rounded-lg shadow-xl bg-[#242834] flex items-center justify-center">
+              <Swiper
+                slidesPerView={1.5}
+                centeredSlides={true}
+                spaceBetween={20}
+                navigation={true}
+                pagination={{ clickable: true }}
+                modules={[Navigation, Pagination]}
+                className="page-swiper"
+              >
+                {pdf.pages.map((page, pageIndex) => (
+                  <SwiperSlide key={pageIndex}>
+                    <canvas
+                      ref={async (canvasEl) => {
+                        if (canvasEl && page) {
+                          const viewport = page.getViewport({ scale: 1, rotation: page.rotate })
+                          const containerWidth = 800
+                          const containerHeight = 600
+                          const scale = Math.min(containerWidth / viewport.width, containerHeight / viewport.height)
+                          const scaledViewport = page.getViewport({ scale, rotation: page.rotate })
+                          const context = canvasEl.getContext('2d')
+                          canvasEl.width = scaledViewport.width
+                          canvasEl.height = scaledViewport.height
+                          await page.render({ canvasContext: context, viewport: scaledViewport }).promise
+                        }
+                      }}
+                      className="max-w-[800px] max-h-[600px] mx-auto object-contain"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div className="flex justify-center gap-3 mt-8">
+        {pdfData.map((pdf, index) => (
+          <button
+            key={pdf.id}
+            onClick={() => setCurrentPdfIndex(index)}
+            className={`relative h-20 w-28 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 ${
+              index === currentPdfIndex ? 'ring-2 ring-blue-500' : ''
+            }`}
           >
-            {Array.from({ length: portfolioPdfs[currentPdfIndex].totalPages }).map((_, index) => (
-              <div key={index} className="w-full flex-shrink-0 h-[600px] relative overflow-hidden">
-                <iframe
-                  key={`${currentPdfIndex}-${index}`}
-                  src={`${portfolioPdfs[currentPdfIndex].file}#page=${index + 1}&toolbar=0&navpanes=0`}
-                  className="w-full h-full border-none overflow-hidden block"
-                  title={`${portfolioPdfs[currentPdfIndex].title} - Página ${index + 1}`}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4">
-            <button
-              onClick={prevPage}
-              className="bg-gray-400 hover:bg-gray-700 text-white px-2 py-1 rounded-full transition-all hover:scale-105"
-            >
-              Página anterior
-            </button>
-            <button
-              onClick={nextPage}
-              className="bg-gray-400 hover:bg-gray-700 text-white px-2 py-1 rounded-full transition-all hover:scale-105"
-            >
-              Próxima página
-            </button>
-          </div>
-        </div>
-        <div className="flex justify-center mt-6">
-          <div className="text-gray-300 text-sm bg-black/50 px-4 py-2 rounded-full">
-            PDF {currentPdfIndex + 1} / {portfolioPdfs.length} — Página {currentPage} / {portfolioPdfs[currentPdfIndex].totalPages}
-          </div>
-        </div>
-        <div className="flex justify-center gap-3 mt-8">
-          {portfolioPdfs.map((pdf, index) => (
-            <button
-              key={pdf.id}
-              onClick={() => goToPdf(index)}
-              className={`relative h-24 w-32 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105 ${
-                index === currentPdfIndex ? 'ring-2 ring-blue-500' : ''
-              }`}
-            >
-              <iframe
-                src={`${pdf.file}#page=1&toolbar=0&navpanes=0`}
-                className="w-full h-full border-none overflow-hidden block"
-                title={`Miniatura ${pdf.title}`}
+            {thumbnails[pdf.id] ? (
+              <img
+                src={thumbnails[pdf.id]}
+                alt={`Miniatura ${pdf.title}`}
+                className="w-full h-full object-contain bg-black"
               />
-              
-              <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 flex items-center justify-center text-white text-xs font-semibold">
+            ) : (
+              <div className="w-full h-full bg-gray-700 flex items-center justify-center text-white text-xs">
                 {pdf.title}
               </div>
-            </button>
-          ))}
-        </div>
-      </div>
-      <div className="absolute inset-y-0 left-0 flex items-center px-6">
-        <button
-          onClick={prevPdf}
-          className="bg-gray-400 hover:bg-gray-700 text-white p-4 rounded-full transition-all hover:scale-110"
-        >
-          <ChevronLeft size={28} />
-        </button>
-      </div>
-      <div className="absolute inset-y-0 right-0 flex items-center px-6">
-        <button
-          onClick={nextPdf}
-          className="bg-gray-400 hover:bg-gray-700 text-white p-4 rounded-full transition-all hover:scale-110"
-        >
-          <ChevronRight size={28} />
-        </button>
+            )}
+            <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs text-center py-1">
+              {pdf.title}
+            </div>
+          </button>
+        ))}
       </div>
     </div>
   )
