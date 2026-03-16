@@ -12,7 +12,7 @@ const Footer = () => {
       {icon: gmail, alt: 'Gmail', link: 'mailto:arturschlichting@gmail.com'},
     ];
   return (
-    <div className='w-full py-4 px-3 sm:px-4 bg-[#013ff6] text-gray-300 font-bold text-xs'>
+    <div className='w-full py-4 px-3 sm:px-4 bg-[#b6ff00] text-black font-bold text-xs'>
         <div className='container mx-auto grid grid-cols-3 items-center gap-3'>
             <p className='text-left'>© 2026 all rights reserved.</p>
             <div className='flex justify-center gap-4'>
@@ -24,7 +24,7 @@ const Footer = () => {
             </div>
             <p className='text-right font-style italic text-xs'>
              website designed by @{' '}
-              <a href='https://github.com/larissarruda/' target='_blank' rel='noopener noreferrer' className='text-[#b6ff00] hover:text-white transition-colors'>
+              <a href='https://github.com/larissarruda/' target='_blank' rel='noopener noreferrer' className='text-[#9f2fe0] hover:text-[#ff22ff] transition-colors'>
                 larissarruda
               </a>
             </p>
