@@ -7,21 +7,21 @@ const VideoEdit = ({ darkMode }) => {
   const videos = [
     {
       id: 1,
-      title: 'Video Edit 1',
+      title: 'Adv - Pensão',
       file: '/Pensao.mp4',
-      caption: 'Edição de vídeo para Pensão'
+      caption: 'Edição de vídeo, copywriting e pós-produção para o anúncio de pensão alimentícia do escritório de advocacia.'
     },
     {
       id: 2,
-      title: 'Video Edit 2',
+      title: 'Evento - Pokemon TCG',
       file: '/Cobertura.mp4',
-      caption: 'Cobertura jornalística'
+      caption: `Cobertura de evento, edição, copywriting, narração e pós-produção para o evento do jogo Pokemon - Trade Card Game.`
     },
     {
       id: 3,
-      title: 'Video Edit 3',
+      title: 'Evento - One Piece TCG',
       file: '/OPTCG.mp4',
-      caption: 'Edição para OPTCG'
+      caption: 'Edição de vídeo, copywriting e pós-produção para o jogo One Piece - Trade Card Game.'
     }
   ]
 
@@ -68,6 +68,10 @@ const VideoEdit = ({ darkMode }) => {
               <ChevronRight size={24} />
             </button>
           </div>
+        </div>
+
+        <div className="mt-4 p-4 bg-[#1f2230] rounded-lg text-white">
+          <p className="text-lg leading-relaxed">{videos[currentVideoIndex].caption}</p>
         </div>
 
         <div className="flex justify-center mt-6">

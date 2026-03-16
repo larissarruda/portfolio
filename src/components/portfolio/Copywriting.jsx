@@ -12,9 +12,11 @@ const Copywriting = ({ darkMode }) => {
       file: '/Pensao.mp4',
       title: 'Adv - pensão',
       totalPages: 3,
-      objetivo: `Objetivo do PDF 1:
-O intuito deste texto era realizar determinada ação e alcançar um público específico.
-Utilize palavras que provoquem nas pessoas as emoções desejadas.`,
+      objetivo: `Educar o público sobre as regras de pagamento de pensão alimentícia, esclarecendo dúvidas comuns e orientando sobre os direitos e deveres relacionados a esse tema. 
+      
+      O conteúdo visa informar os direitos dos filhos de receberem mesmo após os 18 anos, desde que estejam estudando ou não possam se sustentar, e também orientar os responsáveis sobre a necessidade de solicitar a exoneração judicial para encerrar o pagamento da pensão. 
+      
+      A escolha do ambiente de supermercado e a linguagem acessível buscam tornar o conteúdo mais próximo do público, facilitando a compreensão e engajamento.`,
       roteiro: `🎥 Cena 1 –
 📍 Visual: Mariana com um carrinho de supermercado falando:
 
@@ -51,8 +53,11 @@ E ó… se eu fosse você, já deixava o gostei pra esse vídeo chegar a mais pe
       file: '/Brainrot.mp4',
       title: 'Psi - Brainrot',
       totalPages: 3,
-      objetivo: `Objetivo do PDF 2:
-Aqui você detalha outro objetivo para este material.`,
+      objetivo: `O objetivo deste conteúdo é conscientizar os pais sobre os efeitos negativos do consumo excessivo de conteúdos rápidos e altamente estimulantes. 
+      
+      O vídeo busca informar sobre os riscos associados a esse tipo de conteúdo, como dificuldade de concentração, estresse, ansiedade e aversão a atividades que exigem foco e paciência. 
+      
+      A ambientação em um parque e a linguagem acessível visam tornar o conteúdo mais próximo do público, facilitando a compreensão e engajamento, além de oferecer orientações práticas para os pais controlarem o tempo de tela dos filhos e incentivarem atividades mais saudáveis.`,
       roteiro: `Cena 1
 📍 Visual: Camila sentada na grama de algum parque em tom sério,
 Fala:: “CUIDADO: Você está apodrecendo a mente do seu filho!”
@@ -94,8 +99,11 @@ Se esse conteúdo te fez pensar, salva e compartilha com quem também se preocup
       file: '/Netflix.mp4',
       title: 'Caso Netflix',
       totalPages: 3,
-      objetivo: `Objetivo do PDF 3:
-Mais um exemplo de objetivo.`,
+      objetivo: `O objetivo deste conteúdo é alertar as PMEs sobre os riscos ocultos de tributação de serviços digitais, usando o caso da Netflix como exemplo. O vídeo busca educar os empresários sobre a importância de entender as regras fiscais relacionadas a serviços digitais, destacando que o risco de autuação não depende do tamanho da empresa, mas sim dos processos internos.
+
+O conteúdo visa informar sobre as consequências de uma autuação fiscal, que vão além do pagamento de impostos, incluindo impactos no valuation, provisões e balanço da empresa. 
+
+A ambientação em um escritório e a linguagem acessível buscam tornar o conteúdo mais próximo do público empresarial, facilitando a compreensão e engajamento.`,
       roteiro: `ROTEIRO
 1️⃣ Gancho de abertura • Tela mostrando a manchete. • Tópico: “Quando uma big tech toma um ‘spoiler’ de R$ 3,4 bi… você sabe o que isso significa pro seu negócio?” 
 
