@@ -4,7 +4,7 @@ import socialmedia from "../assets/socialmedia.png";
 import videoedit2 from "../assets/videoedit2.png";
 import { useState } from "react";
 import { X } from "lucide-react";
-import SocialMedia from "./portfolio/socialmedia.jsx";
+import SocialMedia from "./portfolio/SocialMedia.jsx";
 import Copywriting from "./portfolio/Copywriting.jsx";
 import VideoEdit from "./portfolio/VideoEdit.jsx";
 const Projects = ({ darkMode }) => {
