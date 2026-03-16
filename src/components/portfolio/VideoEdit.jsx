@@ -8,17 +8,20 @@ const VideoEdit = ({ darkMode }) => {
     {
       id: 1,
       title: 'Video Edit 1',
-      url: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      file: '/Pensao.mp4',
+      caption: 'Edição de vídeo para Pensão'
     },
     {
       id: 2,
       title: 'Video Edit 2',
-      url: 'https://www.youtube.com/embed/3JZ_D3ELwOQ'
+      file: '/Cobertura.mp4',
+      caption: 'Cobertura jornalística'
     },
     {
       id: 3,
       title: 'Video Edit 3',
-      url: 'https://www.youtube.com/embed/L_jWHffIx5E'
+      file: '/OPTCG.mp4',
+      caption: 'Edição para OPTCG'
     }
   ]
 
@@ -38,14 +41,33 @@ const VideoEdit = ({ darkMode }) => {
     <div className="w-full py-12 px-4 bg-[#242834] rounded-lg shadow-lg relative">
       <div className="max-w-5xl mx-auto relative">
         <div className="relative overflow-hidden rounded-lg shadow-2xl bg-black">
-          <iframe
+          <video
             key={currentVideoIndex}
-            src={videos[currentVideoIndex].url}
+            controls
             className="w-full h-[500px] border-none"
             title={videos[currentVideoIndex].title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          >
+            <source src={videos[currentVideoIndex].file} type="video/mp4" />
+            Seu navegador não suporta vídeo HTML5.
+          </video>
+
+          <div className="absolute top-1/2 left-0 flex items-center px-6 -translate-y-1/2">
+            <button
+              onClick={prevVideo}
+              className="bg-white/80 hover:bg-white text-gray-900 h-12 w-12 flex items-center justify-center rounded-full transition-all hover:scale-110"
+            >
+              <ChevronLeft size={24} />
+            </button>
+          </div>
+
+          <div className="absolute top-1/2 right-0 flex items-center px-6 -translate-y-1/2">
+            <button
+              onClick={nextVideo}
+              className="bg-white/80 hover:bg-white text-gray-900 h-12 w-12 flex items-center justify-center rounded-full transition-all hover:scale-110"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
         </div>
 
         <div className="flex justify-center mt-6">
@@ -63,10 +85,10 @@ const VideoEdit = ({ darkMode }) => {
                 index === currentVideoIndex ? 'ring-2 ring-blue-500' : ''
               }`}
             >
-              <iframe
-                src={video.url}
-                className="w-full h-full border-none pointer-events-none"
-                title={`Miniatura ${video.title}`}
+              <img
+                src={video.file.replace('.mp4', '.jpg')}
+                alt={`Preview ${video.title}`}
+                className="w-full h-full object-cover pointer-events-none"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs text-center py-1">
                 {video.title}
@@ -74,24 +96,6 @@ const VideoEdit = ({ darkMode }) => {
             </button>
           ))}
         </div>
-      </div>
-
-      <div className="absolute top-1/2 left-0 flex items-center px-6">
-        <button
-          onClick={prevVideo}
-          className="bg-white/80 hover:bg-white text-gray-900 h-12 w-12 flex items-center justify-center rounded-full transition-all hover:scale-110"
-        >
-          <ChevronLeft size={24} />
-        </button>
-      </div>
-
-      <div className="absolute top-1/2 right-0 flex items-center px-6">
-        <button
-          onClick={nextVideo}
-          className="bg-white/80 hover:bg-white text-gray-900 h-12 w-12 flex items-center justify-center rounded-full transition-all hover:scale-110"
-        >
-          <ChevronRight size={24} />
-        </button>
       </div>
     </div>
   )
