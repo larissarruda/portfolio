@@ -53,7 +53,7 @@ const Hero = ({darkMode}) => {
                         data-aos="fade-up"
                         data-aos-delay="700"
                         >
-                            <a href={CV} className='w-full sm:w-auto'>
+                            <a href={CV} target="_blank" rel="noopener noreferrer" className='w-full sm:w-auto'>
                                 <button className='w-full sm:w-auto inline-flex
                                 items-center justify-center text-[#04045e] bg-[#b6ff00] border-0
                                 py-3 px-6 sm:px-8 hover:shadow-[0_0_40px_rgb(0,0,0,0.7)] rounded-full
@@ -62,7 +62,7 @@ const Hero = ({darkMode}) => {
                                     Download CV
                                 </button>
                             </a>
-                            <a href="#contact" className='w-full sm:w-auto'
+                            <a href="mailto:arturschlichting@gmail.com" target="_blank" rel="noopener noreferrer" className='w-full sm:w-auto'
                             >
                                 <button className={`w-full sm:w-auto inline-flex
                                 items-center ${theme.buttonSecondary} justify-center text-[#04045e] bg-[#013ff6] border-0
