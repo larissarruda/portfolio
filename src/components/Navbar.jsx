@@ -113,7 +113,7 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
             )}
 
            </motion.button>
-           <motion.a
+          {/*  <motion.a
            href="contact"
            whileHover={{scale: 1.05}}
            whileTap={{scale: 0.9}}
@@ -123,10 +123,10 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
             text-[#013ff6] shadow-md hover:shadow-lg transition-shadow`}
            >
             Planos
-           </motion.a>
+           </motion.a> */}
           </div>
           <div className="flex lg:hidden items-center space-x-4 px-2">
-            <motion.button
+            {/* <motion.button
             whileTap={{scale:0.9 }}
             onClick={()=> setIsMenuOpen(!isMenuOpen)}
             className={`p-2 rounded-lg ${ darkMode
@@ -146,7 +146,7 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
                 }`}/>
               )}
 
-            </motion.button>
+            </motion.button> */}
           </div>
       </div>
       {isMenuOpen && (
