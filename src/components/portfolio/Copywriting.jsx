@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const Copywriting = ({ darkMode }) => {
   const [currentPdfIndex, setCurrentPdfIndex] = useState(0)
   const [currentSection, setCurrentSection] = useState('objetivo')
   const [currentPage, setCurrentPage] = useState(1)
-  const touchStartX = useRef(null)
 
   const portfolio = [
     {
@@ -154,40 +153,12 @@ A ambientação em um escritório e a linguagem acessível buscam tornar o conte
     goToPdf((currentPdfIndex - 1 + portfolio.length) % portfolio.length)
   }
 
-  const handleTouchStart = (event) => {
-    touchStartX.current = event.touches[0].clientX
-  }
-
-  const handleTouchEnd = (event) => {
-    if (touchStartX.current === null) {
-      return
-    }
-
-    const touchEndX = event.changedTouches[0].clientX
-    const deltaX = touchEndX - touchStartX.current
-    const swipeThreshold = 50
-
-    if (Math.abs(deltaX) > swipeThreshold) {
-      if (deltaX < 0) {
-        goToNextCopy()
-      } else {
-        goToPrevCopy()
-      }
-    }
-
-    touchStartX.current = null
-  }
-
   const currentItem = portfolio[currentPdfIndex]
   const isVideo = currentItem.file.toLowerCase().endsWith('.mp4')
 
   return (
     <div className="w-full py-8 sm:py-12 px-3 sm:px-4 bg-[#242834] rounded-lg shadow-lg relative">
-      <div
-        className="max-w-5xl mx-auto relative grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
+      <div className="max-w-5xl mx-auto relative grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         <div className="order-2 lg:order-1 relative overflow-hidden rounded-lg shadow-2xl p-4 sm:p-6 lg:p-8 bg-[#1f2230] text-white">
           <div className="flex items-center justify-between mb-4">
             <button
@@ -246,9 +217,6 @@ A ambientação em um escritório e a linguagem acessível buscam tornar o conte
             </div>
           )}
 
-          <div className="sm:hidden absolute top-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded-full">
-            Deslize para trocar
-          </div>
         </div>
       </div>
 
