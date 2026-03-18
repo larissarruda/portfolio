@@ -12,9 +12,9 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.j
 
 const SocialMedia = () => {
   const portfolioPdfs = [
-    { id: 1, file: '/KLG.pdf', title: 'KLG' },
-    { id: 2, file: '/Burnout.pdf', title: 'Burnout' },
-    { id: 3, file: '/KLG3.pdf', title: 'KLG 3' }
+    { id: 1, file: '/Burnout.pdf', title: 'Burnout' },
+    { id: 2, file: '/Pain.pdf', title: 'CBLOL' },
+    { id: 3, file: '/KLG.pdf', title: 'KLG Catálogo' }
   ]
 
   const [pdfData, setPdfData] = useState([])
