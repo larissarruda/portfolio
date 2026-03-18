@@ -28,7 +28,7 @@ const Projects = ({ darkMode }) => {
 
   return (
     <section id="projects" className={`relative overflow-hidden pt-10 sm:pt-0 lg:h-fit lg:px-20 lg:pt-15 md:h-150 flex flex-col lg:justify-center
-    ${darkMode ? "bg-black text-white" : "bg-gray-100 text-gray-900"}`}>
+    ${darkMode ? "bg-black text-white" : "bg-gray-300 text-gray-900"}`}>
       <div className="card-group flex flex-row overflow-x-auto snap-x snap-mandatory scroll-pl-10 gap-4 sm:gap-6 lg:gap-9 lg:pb-30 sm:pb-20 pb-6 pl-10 pr-4 sm:px-8 lg:px-14 items-stretch sm:items-center sm:justify-center [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {sectionItems.map((item) => (
           <div key={item.name} className="card first:ml-1 min-w-65 w-[85%] max-w-72 sm:w-72 sm:min-w-0 shrink-0 snap-start h-auto sm:h-90 relative overflow-hidden rounded-lg group bg-[#242834]">

@@ -1,7 +1,7 @@
 import React from 'react';
 import about from '../assets/artur.png';
 
-const About = (darkMode) => {
+const About = ({darkMode}) => {
     return (
         <section
             id="about"
@@ -25,10 +25,14 @@ const About = (darkMode) => {
                 
                 <div className="lg:w-1/2 w-full lg:pl-10 mt-0 md:mt-10 lg:mt-0">
                     <h2 className="text-3xl sm:text-4xl font-bold mb-6 lg:text-right">Sobre mim</h2>
-                    <p className="mb-4 leading-relaxed text-justify">
+                    <p className={`mb-4 leading-relaxed text-justify text-sm sm:text-base ${darkMode 
+        ? ' text-white' 
+        : ' text-gray-900'}`}>
                         Me chamo Artur, sou um Social Media e Copywriter apaixonado por criar conexões autênticas entre marcas e pessoas.
                     </p>
-                    <p className="mb-4 leading-relaxed text-justify">
+                    <p className={`mb-4 leading-relaxed text-justify text-sm sm:text-base ${darkMode 
+        ? ' text-white' 
+        : ' text-gray-900'}`}>
                         Com uma abordagem estratégica e criativa, ajudo empresas a contar suas histórias de maneira envolvente, impulsionando seu crescimento e engajamento nas redes sociais. Minha missão é transformar ideias em conteúdo impactante que ressoe com o público, elevando a presença digital das marcas a novos patamares.
                     </p>
                 </div>

@@ -7,13 +7,13 @@ const Hero = ({darkMode}) => {
     const lightTheme = {
     textPrimary: 'text-gray-900',
     textSecondary: 'text-gray-700',
-    buttonSecondary: 'text-gray-800 border-2 border-orange-500 hover:text-white',
+    buttonSecondary: 'text-gray-800 border-2 border-[#b6ff00] hover:text-white',
     decorativeCircle: 'bg-orange-400 opacity-20'
     }
     /* verde: b6ff00  azul claro: #013ff6 azul escuro: #04045e meio preto: #242834*/
     const darkTheme = {
     textPrimary: 'text-white',
-    textSecondary: 'text-gray-300',
+    textSecondary: 'text-gray-200',
     buttonSecondary: 'text-white border-2 border-[#b6ff00] hover:bg-[#b6ff00] hover:text-[#04045e]',
     decorativeCircle: 'bg-[#04045e] opacity-10'
     }
@@ -32,7 +32,7 @@ const Hero = ({darkMode}) => {
             <div className='container mx-auto flex px-4 sm:px-8 lg:px-14 sm:py-80 py-18 lg:py-30 flex-col
             lg:flex-row items-center justify-center lg:justify-between' >
                 <div className='lg:w-1/2 w-full flex flex-col items-center
-                lg:items-start text-center lg:text-left mb-12 lg:mb-0   '>
+                lg:items-start text-center lg:text-left mb-12 lg:mb-0 pt-8 '>
                     
                     <h1 className={`title-font text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${theme.textPrimary}`}
                     data-aos="fade-up"
@@ -40,7 +40,7 @@ const Hero = ({darkMode}) => {
                     >
                         Social Media & Copywriter
                     </h1>
-                    <p className={ `mb-6 sm:mb-8 leading-relaxed max-w-md sm:max-w-lg ${theme.textSecondary} text-justify`}
+                    <p className={ `mb-6 sm:mb-8 leading-relaxed max-w-md sm:max-w-lg  ${theme.textPrimary} text-sm sm:text-base text-justify`}
                     data-aos="fade-up"
                     data-aos-delay="600"
                     >
@@ -65,7 +65,9 @@ const Hero = ({darkMode}) => {
                             <a href="mailto:arturschlichting@gmail.com" target="_blank" rel="noopener noreferrer" className='w-full sm:w-auto'
                             >
                                 <button className={`w-full sm:w-auto inline-flex
-                                items-center ${theme.buttonSecondary} justify-center text-[#04045e] bg-[#013ff6] border-0
+                                items-center ${theme.buttonSecondary} justify-center text-[#04045e] ${darkMode 
+        ? 'bg-[#013ff6]' 
+        : 'bg-gray-50'} border-0
                                 py-3 px-6 sm:px-8 hover:shadow-[0_0_40px_rgb(0,0,0,0.7)] rounded-full
                                 text-base sm:text-lg font-semibold transition-all duration-300 transform`}>
                                     <Mail className='w-4 h-4 sm:w-5 sm:h-5 mr-2'/>
