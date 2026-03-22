@@ -38,7 +38,7 @@ const Hero = ({darkMode}) => {
                     data-aos="fade-up"
                     data-aos-delay="500"
                     >
-                        Social Media & Copywriter
+                        AMARO NETO
                     </h1>
                     <p className={ `mb-6 sm:mb-8 leading-relaxed max-w-md sm:max-w-lg  ${theme.textPrimary} text-sm sm:text-base text-justify`}
                     data-aos="fade-up"
