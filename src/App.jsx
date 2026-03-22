@@ -25,10 +25,10 @@ const App = () => {
     setDarkMode(newMode);
     document.documentElement.classList.toggle('dark');
   }
-/* verde: b6ff00  azul claro: #013ff6 azul escuro: #04045e meio preto: #242834*/
+/* verde: f15400  azul claro: #0b1925 azul escuro: #04045e meio preto: #242834*/
   return (
    <div className= {darkMode 
-   ? 'bg-[#013ff6]/90 backdrop-blur-md min-h-screen' 
+   ? 'bg-[#0b1925]/90 backdrop-blur-md min-h-screen' 
    : 'bg-linear-to-br from-gray-50 to-blue-50 min-h-screen'}>
     <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     <Hero darkMode={darkMode} />

@@ -15,7 +15,7 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
     {name: 'Projects', link: '#projects'},
     {name: 'Contact', link: '#contact'},
   ];
-/* verde: b6ff00  azul claro: #013ff6 azul escuro: #04045e meio preto: #242834*/
+/* verde: f15400  azul claro: #0b1925 azul escuro: #04045e meio preto: #242834*/
   const lightColors = {
     navBg: 'bg-linear-to-br from-orange-200 to-white',
     textPrimary: 'text-gray-900',
@@ -26,13 +26,13 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
     button: 'from-orange-500 to-amber-500'
   }
   const darkColors = {
-  navBg: 'bg-[#b6ff00]/90 backdrop-blur-md',
+  navBg: 'bg-[#f15400]/90 backdrop-blur-md',
   textPrimary: 'text-[#04045e]',
   textSecondary: 'text-gray-600',
-  textHover: 'hover:text-[#b6ff00]',
+  textHover: 'hover:text-[#f15400]',
   textActive: 'text-[#04045e]',
-  indicator: 'bg-[#013ff6]',
-  button: 'bg-[#013ff6] hover:bg-[#013ff6] hover:text-[#b6ff00] text-[#b6ff00]'
+  indicator: 'bg-[#0b1925]',
+  button: 'bg-[#0b1925] hover:bg-[#0b1925] hover:text-[#f15400] text-[#f15400]'
 }
 
   const colors = darkMode ? darkColors : lightColors;
@@ -57,8 +57,8 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
           className="flex items-center space-x-2"
           >
             <span className={`text-xl font-bold ${colors.textPrimary}`}>
-              Artur Schlichting<span
-              className={`text-[#013ff6]`}>.</span>
+              Amaro Neto<span
+              className={`text-[#0b1925]`}>.</span>
             </span>
           </motion.a>
           <div className="hidden lg:flex items-center space-x-6 ">
@@ -120,7 +120,7 @@ const Navbar = ({darkMode, toggleDarkMode}) => {
            
            className={` hidden lg:block px-6 py-2 font-semibold rounded-full
             bg-linear-to-r ${colors.button}
-            text-[#013ff6] shadow-md hover:shadow-lg transition-shadow`}
+            text-[#0b1925] shadow-md hover:shadow-lg transition-shadow`}
            >
             Planos
            </motion.a> */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import about from '../assets/artur.png';
+import about from '../assets/neto-shape.png';
 
 const About = ({darkMode}) => {
     return (
@@ -7,7 +7,7 @@ const About = ({darkMode}) => {
             id="about"
             className={`relative overflow-hidden lg:h-130 lg:px-65 lg:pt-8 md:h-150 flex flex-col lg:justify-center 
         ${darkMode 
-        ? 'bg-[#013ff6] text-white' 
+        ? 'bg-[#0b1925] text-white' 
         : 'bg-gray-100 text-gray-900'} `}
         >
             <div
@@ -15,11 +15,11 @@ const About = ({darkMode}) => {
                 data-aos="fade-down"
                 data-aos-delay="250"
             >
-                <div className="hidden md:flex lg:w-1/2 w-full justify-center lg:justify-start">
+                <div className="hidden md:flex lg:w-1/2 w-full justify-center">
                     <img
                         src={about}
-                        alt="Artur Schlichting"
-                        className="w-64 sm:w-80 md:w-96 h-auto object-contain"
+                        alt="Amaro Neto"
+                        className="w-80 sm:w-96 md:w-[28rem] lg:w-[21rem] h-auto object-contain"
                     />
                 </div>
                 
@@ -28,7 +28,7 @@ const About = ({darkMode}) => {
                     <p className={`mb-4 leading-relaxed text-justify text-sm sm:text-base ${darkMode 
         ? ' text-white' 
         : ' text-gray-900'}`}>
-                        Me chamo Artur, sou um Social Media e Copywriter apaixonado por criar conexões autênticas entre marcas e pessoas.
+                        Me chamo Amaro Neto, sou um Social Media e Copywriter apaixonado por criar conexões autênticas entre marcas e pessoas.
                     </p>
                     <p className={`mb-4 leading-relaxed text-justify text-sm sm:text-base ${darkMode 
         ? ' text-white' 

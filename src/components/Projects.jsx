@@ -36,15 +36,15 @@ const Projects = ({ darkMode }) => {
             src={item.image}
             className="absolute inset-0 w-full h-full object-cover grayscale-100 group-hover:grayscale-0"
           />
-            {/* verde: b6ff00  azul claro: #013ff6 azul escuro: #04045e meio preto: #242834*/}
-          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-[#013ff6]/30 group-hover:opacity-60 transition-opacity" />
+            {/* verde: f15400  azul claro: #0b1925 azul escuro: #04045e meio preto: #242834*/}
+          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-[#0b1925]/30 group-hover:opacity-60 transition-opacity" />
           <div className="relative sm:absolute inset-0 flex flex-col justify-end p-4 text-white min-h-48 sm:min-h-0">
             <h5 className="card-title mb-2 font-bold">{item.displayName}</h5>
             <p className="text-sm h-auto sm:h-20">
               {item.legenda}
             </p>
             <button
-              className="btn btn-secondary mt-4 w-30 h-8 cursor-pointer bg-[#b6ff00] text-black rounded-lg font-bold"
+              className="btn btn-secondary mt-4 w-30 h-8 cursor-pointer bg-[#f15400] text-black rounded-lg font-bold"
               onClick={() => handleSectionChange(item.name)}
             >
               Exemplos
@@ -56,10 +56,10 @@ const Projects = ({ darkMode }) => {
         ))}
         
       </div>
-      {/* verde: b6ff00  azul claro: #013ff6 azul escuro: #04045e meio preto: #242834*/}
+      {/* verde: f15400  azul claro: #0b1925 azul escuro: #04045e meio preto: #242834*/}
       <section id="projects-body" className="px-0 sm:px-8 lg:px-14 mb-10 mx-0 lg:mx-30">
         <div className={`justify-end  ${currentSection ? 'flex justify-center mb-10' : 'hidden'}`}>
-          <button className="btn btn-secondary w-10 h-8 cursor-pointer bg-[#b6ff00] text-black rounded-lg font-bold justify-center items-center flex" onClick={() => handleSectionChange('close')}>
+          <button className="btn btn-secondary w-10 h-8 cursor-pointer bg-[#f15400] text-black rounded-lg font-bold justify-center items-center flex" onClick={() => handleSectionChange('close')}>
             <X className="w-5 h-5" />
           </button>
         </div>

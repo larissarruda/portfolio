@@ -9,10 +9,10 @@ const Footer = () => {
       {icon: instagram, alt: 'Instagram', link: 'https://www.instagram.com/unfav_tunico/'},
       {icon: linkedin, alt: 'LinkedIn', link: 'https://www.linkedin.com/in/artur-schlichting/'},
       {icon: vimeo, alt: 'Vimeo', link: 'https://vimeo.com/unfav_tunico'},
-      {icon: gmail, alt: 'Gmail', link: 'mailto:arturschlichting@gmail.com'},
+      {icon: gmail, alt: 'Gmail', link: 'mailto:amarobsneto@gmail.com'},
     ];
   return (
-    <div className='w-full py-4 px-3 sm:px-4 bg-[#b6ff00] text-black font-bold text-xs'>
+    <div className='w-full py-4 px-3 sm:px-4 bg-[#f15400] text-black font-bold text-xs'>
         <div className='container mx-auto grid grid-cols-3 items-center gap-3'>
             <p className='text-left'>© 2026 all rights reserved.</p>
             <div className='flex justify-center gap-4'>

@@ -1,4 +1,4 @@
-import cutiepie from '../assets/51.png';
+import cutiepie from '../assets/donut.png';
 import CV from '../assets/CV.pdf';
 import { DownloadIcon, Mail} from "lucide-react"
 
@@ -7,14 +7,14 @@ const Hero = ({darkMode}) => {
     const lightTheme = {
     textPrimary: 'text-gray-900',
     textSecondary: 'text-gray-700',
-    buttonSecondary: 'text-gray-800 border-2 border-[#b6ff00] hover:text-white',
+    buttonSecondary: 'text-gray-800 border-2 border-[#f15400] hover:text-white',
     decorativeCircle: 'bg-orange-400 opacity-20'
     }
-    /* verde: b6ff00  azul claro: #013ff6 azul escuro: #04045e meio preto: #242834*/
+    /* laranja: f15400  azul-escuro: #0b1925 azul escuro: #04045e meio preto: #242834*/
     const darkTheme = {
     textPrimary: 'text-white',
     textSecondary: 'text-gray-200',
-    buttonSecondary: 'text-white border-2 border-[#b6ff00] hover:bg-[#b6ff00] hover:text-[#04045e]',
+    buttonSecondary: 'text-white border-2 border-[#f15400] hover:bg-[#f15400] hover:text-[#04045e]',
     decorativeCircle: 'bg-[#04045e] opacity-10'
     }
 
@@ -38,7 +38,7 @@ const Hero = ({darkMode}) => {
                     data-aos="fade-up"
                     data-aos-delay="500"
                     >
-                        AMARO NETO
+                        Social Media & Copywriter <span className='text-[#0b1925]'>.</span>
                     </h1>
                     <p className={ `mb-6 sm:mb-8 leading-relaxed max-w-md sm:max-w-lg  ${theme.textPrimary} text-sm sm:text-base text-justify`}
                     data-aos="fade-up"
@@ -55,23 +55,23 @@ const Hero = ({darkMode}) => {
                         >
                             <a href={CV} target="_blank" rel="noopener noreferrer" className='w-full sm:w-auto'>
                                 <button className='w-full sm:w-auto inline-flex
-                                items-center justify-center text-[#04045e] bg-[#b6ff00] border-0
+                                items-center justify-center text-[#04045e] bg-[#f15400] border-0
                                 py-3 px-6 sm:px-8 hover:shadow-[0_0_40px_rgb(0,0,0,0.7)] rounded-full
                                 text-base sm:text-lg font-semibold transition-all duration-300 transform'>
                                     <DownloadIcon className='w-4 h-4 sm:h-5 sm:w-5 mr-2'/>
                                     Download CV
                                 </button>
                             </a>
-                            <a href="mailto:arturschlichting@gmail.com" target="_blank" rel="noopener noreferrer" className='w-full sm:w-auto'
+                            <a href="mailto:amarobsneto@gmail.com" target="_blank" rel="noopener noreferrer" className='w-full sm:w-auto'
                             >
                                 <button className={`w-full sm:w-auto inline-flex
                                 items-center ${theme.buttonSecondary} justify-center text-[#04045e] ${darkMode 
-        ? 'bg-[#013ff6]' 
+        ? 'bg-[#0b1925]' 
         : 'bg-gray-50'} border-0
                                 py-3 px-6 sm:px-8 hover:shadow-[0_0_40px_rgb(0,0,0,0.7)] rounded-full
                                 text-base sm:text-lg font-semibold transition-all duration-300 transform`}>
                                     <Mail className='w-4 h-4 sm:w-5 sm:h-5 mr-2'/>
-                                    Contact Me
+                                    Contato
                                 </button>
                             </a>
                         </div>

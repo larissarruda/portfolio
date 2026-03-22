@@ -4,8 +4,8 @@ const Skills = (darkMode) => {
     return (
         <section id="skills" className={`relative overflow-hidden py-2 sm:py-6 lg:py-0 lg:px-100 flex flex-col lg:justify-center 
         ${darkMode 
-        ? 'bg-gray-900 text-white' 
-        : 'bg-gray-100 text-gray-900'}`}>
+        ? 'bg-[#f15400] text-[#242834]' 
+        : 'bg-[#f15400] text-gray-900'}`}>
             
             <div className="relative min-h-14 sm:min-h-24 lg:min-h-20 flex items-center justify-center overflow-hidden">
                 <div className="flex gap-4 sm:gap-8 animate-scroll whitespace-nowrap">
